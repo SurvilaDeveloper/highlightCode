@@ -141,7 +141,7 @@ export interface Theme {
     }
 }
 
-class HighlightCode {
+class HighlightCodeClass {
 
     defaultThemeType: string;
     defaultTheme: Theme;
@@ -646,12 +646,12 @@ interface HighlightCodeProps {
     customerTheme?: Theme;
 }
 
-const HighlightCodeComponent = ({ code, language, theme, width, height, fontSize, customerTheme }: HighlightCodeProps) => {
+const HighlightCode = ({ code, language, theme, width, height, fontSize, customerTheme }: HighlightCodeProps) => {
 
     const [suffix] = useState(Math.random().toString(36).substring(10));
     const [text, setText] = useState(code)
     const [themeState, setThemeState] = useState(theme || "dark")
-    const hlc = useMemo(() => new HighlightCode(themeState, suffix), [themeState]);
+    const hlc = useMemo(() => new HighlightCodeClass(themeState, suffix), [themeState]);
     if (customerTheme) {
         hlc.setDefaultTheme(customerTheme)
     }
@@ -724,6 +724,6 @@ const HighlightCodeComponent = ({ code, language, theme, width, height, fontSize
     );
 };
 
-export default HighlightCodeComponent;
+export default HighlightCode;
 
 // git //

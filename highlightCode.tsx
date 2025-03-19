@@ -50,8 +50,8 @@ const darkTheme = {
 const lightTheme = {
     container: {
         display: "flex",
-        backgroundColor: "#CFCFCF",
-        color: "#000000",
+        backgroundColor: "rgb(207, 207, 207)",
+        color: "rgb(0, 0, 0)",
         fontFamily: "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
         borderRadius: "8px",
         padding: "10px",
@@ -60,86 +60,111 @@ const lightTheme = {
         height: "100%"
     },
     html: {
-        string: { color: "#7F4A1F" }, // Marrón oscuro
-        function: { color: "#8A6B12" }, // Dorado más opaco
-        parentheses: { color: "#1D6D8C" }, // Azul oscuro
-        operator: { color: "#174D8F" }, // Azul más intenso
-        tagName: { color: "#174D8F" }, // Azul intenso como los operadores
-        comment: { color: "#606060" }, // Gris más oscuro
-        php_variable: { color: "#2C6FBF" } // Azul fuerte
+        string: { color: "rgb(127, 74, 31)" },
+        function: { color: "rgb(138, 107, 18)" },
+        parentheses: { color: "rgb(29, 109, 140)" },
+        operator: { color: "rgb(23, 77, 143)" },
+        tagName: { color: "rgb(23, 77, 143)" },
+        comment: { color: "rgb(96, 96, 96)" },
+        php_variable: { color: "rgb(44, 111, 191)" }
     },
     ts: {
-        keyword: { color: "#3D0080" }, // Morado más oscuro
-        function: { color: "#8A6B12" }, // Dorado más opaco
-        class: { color: "#006600" }, // Verde oscuro
-        type: { color: "#008000" }, // Verde medio
-        string: { color: "#6F6F00" }, // Amarillo más opaco
-        number: { color: "#661A1A" }, // Rojo más oscuro
-        comment: { color: "#606060" }, // Gris oscuro
-        operator: { color: "#8A0000" }, // Rojo oscuro
-        parentheses: { color: "#66432A" }, // Marrón oscuro
-        brackets: { color: "#486629" }, // Verde oliva oscuro
-        braces: { color: "#2A5F5F" } // Azul verdoso oscuro
+        keyword: { color: "rgb(61, 0, 128)" },
+        function: { color: "rgb(138, 107, 18)" },
+        class: { color: "rgb(0, 102, 0)" },
+        type: { color: "rgb(0, 128, 0)" },
+        string: { color: "rgb(111, 111, 0)" },
+        number: { color: "rgb(102, 26, 26)" },
+        comment: { color: "rgb(96, 96, 96)" },
+        operator: { color: "rgb(138, 0, 0)" },
+        parentheses: { color: "rgb(102, 67, 42)" },
+        brackets: { color: "rgb(72, 102, 41)" },
+        braces: { color: "rgb(42, 95, 95)" }
     },
     css: {
-        function: { color: "#8A6B12" }, // Dorado más opaco
-        string: { color: "#7F4A1F" }, // Marrón oscuro
-        number: { color: "#993D00" }, // Naranja quemado
-        comment: { color: "#606060" }, // Gris más oscuro
-        parentheses: { color: "#8A7351" }, // Beige oscuro
-        brackets: { color: "#78933D" }, // Verde más opaco
-        braces: { color: "#8A3085" }, // Púrpura oscuro
-        selector: { color: "#8A7351" }, // Beige oscuro como los paréntesis
-        value: { color: "#993524" } // Rojo oscuro con un toque naranja
+        function: { color: "rgb(138, 107, 18)" },
+        string: { color: "rgb(127, 74, 31)" },
+        number: { color: "rgb(153, 61, 0)" },
+        comment: { color: "rgb(96, 96, 96)" },
+        parentheses: { color: "rgb(138, 115, 81)" },
+        brackets: { color: "rgb(120, 147, 61)" },
+        braces: { color: "rgb(138, 48, 133)" },
+        selector: { color: "rgb(138, 115, 81)" },
+        value: { color: "rgb(153, 53, 36)" }
     }
 };
 
+/**
+ * Theme Interface
+ * 
+ * This interface defines the structure of a theme object used for syntax highlighting. 
+ * Each section represents a specific language (HTML, TypeScript, CSS), 
+ * and the colors for each element in that language are defined through color keys.
+ * 
+ * @interface Theme
+ */
 export interface Theme {
+    /**
+     * General configuration for the container, including background, text color, font, and size.
+     */
     container: {
-        display: string,
-        backgroundColor: string,
-        color: string,
-        fontFamily: string,
-        borderRadius: string,
-        padding: string,
-        overflowX: string,
-        width: string,
-        height: string
-    }
+        display: string, // The CSS value for the display property (e.g., "flex").
+        backgroundColor: string, // The background color of the container (in hexadecimal or rgb format).
+        color: string, // The text color in the container (in hexadecimal or rgb format).
+        fontFamily: string, // The font family used in the container.
+        borderRadius: string, // The border radius (e.g., "8px").
+        padding: string, // The padding inside the container (e.g., "10px").
+        overflowX: string, // The overflow property for the X-axis (e.g., "auto").
+        width: string, // The width of the container (e.g., "100%" or "500px").
+        height: string // The height of the container (e.g., "100%" or "300px").
+    },
+
+    /**
+     * Colors used for syntax highlighting in HTML elements.
+     */
     html: {
-        string: { color: string }, // Marrón cálido
-        function: { color: string }, // Dorado más claro
-        parentheses: { color: string }, // Azul más vibrante
-        operator: { color: string }, // Azul intenso
-        tagName: { color: string }, // Azul intenso como los operadores
-        comment: { color: string }, // Gris neutro para comentarios
-        php_variable: { color: string } // Azul brillante para variables PHP
+        string: { color: string }, // The color for string literals in HTML (e.g., warm brown).
+        function: { color: string }, // The color for functions in HTML (e.g., lighter gold).
+        parentheses: { color: string }, // The color for parentheses in HTML (e.g., vibrant blue).
+        operator: { color: string }, // The color for operators in HTML (e.g., intense blue).
+        tagName: { color: string }, // The color for tag names in HTML (similar to operators, intense blue).
+        comment: { color: string }, // The color for comments in HTML (neutral gray).
+        php_variable: { color: string } // The color for PHP variables in HTML (bright blue).
     },
+
+    /**
+     * Colors used for syntax highlighting in TypeScript elements.
+     */
     ts: {
-        keyword: { color: string }, // Morado más vivo
-        function: { color: string }, // Dorado más claro
-        class: { color: string }, // Verde vibrante
-        type: { color: string }, // Verde brillante
-        string: { color: string }, // Amarillo oscuro
-        number: { color: string }, // Rojo más cálido
-        comment: { color: string }, // Gris oscuro
-        operator: { color: string }, // Rojo vibrante
-        parentheses: { color: string }, // Marrón más claro
-        brackets: { color: string }, // Verde oliva
-        braces: { color: string } // Azul verdoso
+        keyword: { color: string }, // The color for keywords in TypeScript (e.g., darker purple).
+        function: { color: string }, // The color for functions in TypeScript (e.g., lighter gold).
+        class: { color: string }, // The color for classes in TypeScript (e.g., vibrant green).
+        type: { color: string }, // The color for types in TypeScript (e.g., bright green).
+        string: { color: string }, // The color for string literals in TypeScript (e.g., dark yellow).
+        number: { color: string }, // The color for numbers in TypeScript (e.g., warm red).
+        comment: { color: string }, // The color for comments in TypeScript (dark gray).
+        operator: { color: string }, // The color for operators in TypeScript (vibrant red).
+        parentheses: { color: string }, // The color for parentheses in TypeScript (lighter brown).
+        brackets: { color: string }, // The color for brackets in TypeScript (olive green).
+        braces: { color: string } // The color for braces in TypeScript (bluish green).
     },
+
+    /**
+     * Colors used for syntax highlighting in CSS elements.
+     */
     css: {
-        function: { color: string }, // Dorado más claro
-        string: { color: string }, // Marrón cálido
-        number: { color: string }, // Naranja más suave
-        comment: { color: string }, // Gris neutro
-        parentheses: { color: string }, // Beige claro
-        brackets: { color: string }, // Verde claro
-        braces: { color: string }, // Púrpura más suave
-        selector: { color: string }, // Beige como los paréntesis
-        value: { color: string } // Rojo-naranja más cálido
+        function: { color: string }, // The color for functions in CSS (e.g., lighter gold).
+        string: { color: string }, // The color for string literals in CSS (e.g., warm brown).
+        number: { color: string }, // The color for numbers in CSS (e.g., soft orange).
+        comment: { color: string }, // The color for comments in CSS (neutral gray).
+        parentheses: { color: string }, // The color for parentheses in CSS (light beige).
+        brackets: { color: string }, // The color for brackets in CSS (light green).
+        braces: { color: string }, // The color for braces in CSS (softer purple).
+        selector: { color: string }, // The color for selectors in CSS (similar to parentheses, light beige).
+        value: { color: string } // The color for values in CSS (warm red-orange).
     }
 }
+
 
 class HighlightCodeClass {
 
@@ -646,6 +671,21 @@ interface HighlightCodeProps {
     customerTheme?: Theme;
 }
 
+/**
+ * Componente HighlightCode
+ * 
+ * This component is responsible for highlighting code in an editor or viewer.
+ * It receives several props that allow you to customize the code's appearance, size, and theme.
+ * 
+ * @param code The code to be highlighted.
+ * @param language The programming language of the code ("html", "php", "js", "ts" or "css").
+ * @param theme The theme to apply to the code (it can be "dark" or "light").
+ * @param width (string) Width of the component area (e.g. "500px"). 
+ * @param height (string) High of the component area (e.g. "500px").
+ * @param fontSize Font size of the code.
+ * @param customerTheme (@type Theme) A custom theme that will be passed to override the default colors.
+ * 
+ */
 const HighlightCode = ({ code, language, theme, width, height, fontSize, customerTheme }: HighlightCodeProps) => {
 
     const [suffix] = useState(Math.random().toString(36).substring(10));
@@ -725,5 +765,3 @@ const HighlightCode = ({ code, language, theme, width, height, fontSize, custome
 };
 
 export default HighlightCode;
-
-// git //
